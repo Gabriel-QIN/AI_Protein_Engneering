@@ -1,5 +1,5 @@
 # dir 不需要提交的目录
 /esm2_t33_650M_UR50D
-# file 不需要提交的文件
+# 不需要提交的文件
 few_shot_single.py
 few_shot_multi.py
