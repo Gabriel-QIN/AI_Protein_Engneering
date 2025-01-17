@@ -57,11 +57,11 @@ $$
   ```
   conda create -n mutation python=3.11
   conda activate mutation
-  # 安装数据分析相关包
+  # data analysis packages
   pip install tqdm numpy pandas matplotlib biopython
-  # 安装机器学习相关包
+  # ML packages
   pip install scikit-learn xgboost scipy
-  # 安装语言模型相关包
+  # language model packages
   pip install torch fair-esm transformers 
   ```
 
