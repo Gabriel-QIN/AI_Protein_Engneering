@@ -1,8 +1,8 @@
 # dir 不需要提交的目录
 /esm2_t33_650M_UR50D
 # file 不需要提交的文件
-zero_shot_single.py
-​zero_shot_multi.py
+few_shot_single.py
+few_shot_multi.py
 # log 不需要提交的任意包含后缀名为log的文件
 *.log
 # Package Files 不需要提交的任意包含后缀名为jar的文件
