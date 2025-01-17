@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# AI_Protein_Engneering
-=======
 # AI Protein Engineering 
 
 
@@ -151,4 +148,3 @@ Mutation effect prediction using inverse folding models (e.g., ProteinMPNN)
 [18] https://github.com/amelie-iska/Variant-Effects
 
 [19] https://github.com/ntranoslab/esm-variants
->>>>>>> c3a18b8 (first commit)
