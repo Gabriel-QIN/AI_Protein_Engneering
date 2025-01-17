@@ -64,6 +64,11 @@ This work was debugged in a Linux Ubuntu 22.04.1 LTS environment. macOS and Wind
   pip install torch fair-esm transformers 
   ```
 
+* **Pull this repo**
+  ```
+  git clone https://github.com/Gabriel-QIN/AI_Protein_Engneering.git
+  ```
+
 ### Zero-shot variant effect inference
 
 #### single-site mutation

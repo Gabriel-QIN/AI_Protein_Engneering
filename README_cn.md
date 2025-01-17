@@ -69,6 +69,11 @@ ESM2 提供了多个不同参数量的模型，本文选择了中等规模的 65
   # 安装语言模型相关包
   pip install torch fair-esm transformers 
   ```
+* **下载本文的python代码**
+
+  ```
+  git clone https://github.com/Gabriel-QIN/AI_Protein_Engneering.git
+  ```
 
 ### 2. 零样本突变预测
 
