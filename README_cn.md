@@ -116,40 +116,41 @@ python zero_shot_multi.py --name example  --seq ${myseq} --mut_pool output/sing
 
 ## 参考文献
 
-**[1] Listov, D., Goverde, C.A., Correia, B.E. ***et al.* Opportunities and challenges in design and optimization of protein function. *Nat Rev Mol Cell Biol***25**, 639–653 (2024). [https://doi.org/10.1038/s41580-024-00718-y](https://doi.org/10.1038/s41580-024-00718-y)
 
-**[2] Romero, P., Arnold, F. Exploring protein fitness landscapes by directed evolution. ***Nat Rev Mol Cell Biol***10**, 866–876 (2009). [https://doi.org/10.1038/nrm2805](https://doi.org/10.1038/nrm2805)
+[1] Listov, D., Goverde, C.A., Correia, B.E. *et al.* Opportunities and challenges in design and optimization of protein function. *Nat Rev Mol Cell Biol* **25**, 639–653 (2024). https://doi.org/10.1038/s41580-024-00718-y
 
-**[3] Reeves, S., Kalyaanamoorthy, S. Zero-shot transfer of protein sequence likelihood models to thermostability prediction. ***Nat Mach Intell***6**, 1063–1076 (2024). [https://doi.org/10.1038/s42256-024-00887-7](https://doi.org/10.1038/s42256-024-00887-7)
+[2] Romero, P., Arnold, F. Exploring protein fitness landscapes by directed evolution. *Nat Rev Mol Cell Biol* **10**, 866–876 (2009). https://doi.org/10.1038/nrm2805
 
-**[4] Chu, A.E., Lu, T. & Huang, PS. Sparks of function by de novo protein design. ***Nat Biotechnol***42**, 203–215 (2024). [https://doi.org/10.1038/s41587-024-02133-2](https://doi.org/10.1038/s41587-024-02133-2)
+[3] Reeves, S., Kalyaanamoorthy, S. Zero-shot transfer of protein sequence likelihood models to thermostability prediction. *Nat Mach Intell* **6**, 1063–1076 (2024). https://doi.org/10.1038/s42256-024-00887-7
 
-**[5] Notin, P., Rollins, N., Gal, Y. ***et al.* Machine learning for functional protein design. *Nat Biotechnol***42**, 216–228 (2024). [https://doi.org/10.1038/s41587-024-02127-0](https://doi.org/10.1038/s41587-024-02127-0)
+[4] Chu, A.E., Lu, T. & Huang, PS. Sparks of function by de novo protein design. *Nat Biotechnol* **42**, 203–215 (2024). https://doi.org/10.1038/s41587-024-02133-2
 
-**[6] Song, Y., Yuan, Q., Chen, S. ***et al.* Accurately predicting enzyme functions through geometric graph learning on ESMFold-predicted structures. *Nat Commun***15**, 8180 (2024). [https://doi.org/10.1038/s41467-024-52533-w](https://doi.org/10.1038/s41467-024-52533-w)
+[5] Notin, P., Rollins, N., Gal, Y. *et al.* Machine learning for functional protein design. *Nat Biotechnol* **42**, 216–228 (2024). https://doi.org/10.1038/s41587-024-02127-0
 
-**[7] Lu, H., Diaz, D.J., Czarnecki, N.J. ***et al.* Machine learning-aided engineering of hydrolases for PET depolymerization. *Nature***604**, 662–667 (2022). [https://doi.org/10.1038/s41586-022-04599-z](https://doi.org/10.1038/s41586-022-04599-z)
+[6] Song, Y., Yuan, Q., Chen, S. *et al.* Accurately predicting enzyme functions through geometric graph learning on ESMFold-predicted structures. *Nat Commun* **15**, 8180 (2024). https://doi.org/10.1038/s41467-024-52533-w
 
-**[8] Hie, B.L., Shanker, V.R., Xu, D. ***et al.* Efficient evolution of human antibodies from general protein language models. *Nat Biotechnol***42**, 275–283 (2024). [https://doi.org/10.1038/s41587-023-01763-2](https://doi.org/10.1038/s41587-023-01763-2)
+[7] Lu, H., Diaz, D.J., Czarnecki, N.J. *et al.* Machine learning-aided engineering of hydrolases for PET depolymerization. *Nature* **604**, 662–667 (2022). https://doi.org/10.1038/s41586-022-04599-z
 
-**[9] Varun R. Shanker ***et al.* Unsupervised evolution of protein and antibody complexes with a structure-informed language model. *Science***385**, 46-53 (2024) .[https://doi.org/10.1038/](https://doi.org/10.1038/)[10.1126/science.adk8946](https://doi.org/10.1126/science.adk8946)
+[8] Hie, B.L., Shanker, V.R., Xu, D. *et al.* Efficient evolution of human antibodies from general protein language models. *Nat Biotechnol* **42**, 275–283 (2024). https://doi.org/10.1038/s41587-023-01763-2
 
-**[10] Kaiyi J. ***et al*. , Rapid in silico directed evolution by a protein language model with EVOLVEpro. *Science***0**, eadr6006. [https://doi.org/10.1126/science.adr6006](https://doi.org/10.1126/science.adr6006)
+[9] Varun R. Shanker *et al.* Unsupervised evolution of protein and antibody complexes with a structure-informed language model. *Science* **385**, 46-53 (2024) .https://doi.org/10.1038/[10.1126/science.adk8946](https://doi.org/10.1126/science.adk8946)
 
-**[11] Ruffolo, J.A., Madani, A. Designing proteins with language models. ***Nat Biotechnol***42**, 200–202 (2024). [https://doi.org/10.1038/s41587-024-02123-4](https://doi.org/10.1038/s41587-024-02123-4)
+[10] Kaiyi J. *et al*. , Rapid in silico directed evolution by a protein language model with EVOLVEpro. *Science* **0**, eadr6006. https://doi.org/10.1126/science.adr6006
 
-**[12] **[https://github.com/LirongWu/awesome-protein-representation-learning](https://github.com/LirongWu/awesome-protein-representation-learning)
+[11] Ruffolo, J.A., Madani, A. Designing proteins with language models. *Nat Biotechnol* **42**, 200–202 (2024). https://doi.org/10.1038/s41587-024-02123-4
 
-**[13] **[https://github.com/agemagician/ProtTrans](https://github.com/agemagician/ProtTrans)
+[12] https://github.com/LirongWu/awesome-protein-representation-learning
 
-**[14] **[https://github.com/facebookresearch/esm](https://github.com/facebookresearch/esm)
+[13] https://github.com/agemagician/ProtTrans
 
-**[15] **[https://github.com/mheinzinger/ProstT5](https://github.com/mheinzinger/ProstT5)
+[14] https://github.com/facebookresearch/esm
 
-**[16] **[https://github.com/westlake-repl/SaProt](https://github.com/westlake-repl/SaProt)
+[15] https://github.com/mheinzinger/ProstT5
 
-**[17] Lin, Z. et al. Evolutionary-scale prediction of atomic-level protein structure with a language model. ***Science***379**, 1123–1130 (2023). [https://doi.org/10.1126/science.ade2574](https://doi.org/10.1126/science.ade2574)
+[16] https://github.com/westlake-repl/SaProt
 
-**[18] **[https://github.com/amelie-iska/Variant-Effects](https://github.com/amelie-iska/Variant-Effects)
+[17] Lin, Z. et al. Evolutionary-scale prediction of atomic-level protein structure with a language model. *Science* **379**, 1123–1130 (2023). https://doi.org/10.1126/science.ade2574
 
-**[19] **[https://github.com/ntranoslab/esm-variants](https://github.com/ntranoslab/esm-variants)
+[18] https://github.com/amelie-iska/Variant-Effects
+
+[19] https://github.com/ntranoslab/esm-variants
