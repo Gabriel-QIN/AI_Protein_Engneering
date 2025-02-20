@@ -1,4 +1,3 @@
-
 # AI蛋白质工程
 
 > 使用蛋白质序列概率模型推断突变效应
@@ -98,7 +97,26 @@ ESM2 提供了多个不同参数量的模型，本文选择了中等规模的 65
 ESM预测突变影响的方式是无监督的，即在训练过程中并未使用与突变影响相关的标签进行有监督学习。
 
 1. 首先，我们需要加载预训练的ESM-2模型及其分词器，并指定输入的蛋白质序列。接着，使用分词器对序列进行分词处理，生成一系列的token ID。在蛋白质序列中，每个氨基酸都通过分词器的词汇表映射到一个相应的token。
+
+   ```python
+   from transformers import EsmTokenizer, EsmForMaskedLM
+
+   model = EsmForMaskedLM.from_pretrained(model_name)
+   for name, param in model.named_parameters():
+       if 'contact_head.regression' in name:
+       param.requires_grad = False
+   tokenizer = EsmTokenizer.from_pretrained(model_name)
+   model = model.to(device)
+   model.eval()
+   vocab = tokenizer.get_vocab()
+   ```
 2. 对于蛋白质序列中的每个位置$i$，我们需要计算每个标准20种氨基酸的对数似然比来表示氨基酸替换对序列的影响。在每个位置$i$，目标氨基酸被mask，然后使用模型预测该位置氨基酸标记的概率分布。模型输出的每个氨基酸标记的logits通过softmax函数转化为概率。
+
+   ```python
+   import torch
+   with torch.no_grad():
+   	token_probs = torch.log_softmax(model(batch_tokens).logits, dim=-1)
+   ```
 
 在ESM-1v文章中[15]，作者比较了多种LLR打分方式，其中**Masked marginal**表现最优，因此本文默认采用**Masked marginal**方法进行打分。
 
@@ -130,14 +148,35 @@ $$
 
 #### 单点突变
 
+##### 单点突变打分计算函数
+
+```python
+def label_row(row, sequence, token_probs, tokenizer, offset_idx):
+    # 提取WT氨基酸、位置索引和突变氨基酸
+    wt, idx, mt = row[0], int(row[1:-1]) - offset_idx, row[-1]
+    assert sequence[idx] == wt, "The listed wildtype does not match the provided sequence"
+    # 对WT序列和突变序列进行编码
+    wt_encoded, mt_encoded = tokenizer.encode(wt, add_special_tokens=False)[0], tokenizer.encode(mt, add_special_tokens=False)[0]
+    # 计算对数似然比
+    score = token_probs[0, 1 + idx, mt_encoded] - token_probs[0, 1 + idx, wt_encoded]
+    return score.item()
+
+sequence = "XXXXXXXXXXX"
+df["esm2"] = df.apply(lambda row: label_row(row["mutant"], sequence, token_probs, tokenizer, offset_idx=1),axis=1)
+```
+
 ##### 模型推理
+
+使用Python脚本 `zero_shot_single.py`进行打分，生成所有可能的单点突变的打分，以及Top 20突变的csv文件。
+
+该脚本的帮助文档如下：
+
+![b22c7614b2385baf700ac9135abf1fc](AI蛋白质工程/b22c7614b2385baf700ac9135abf1fc-17400365333161.png)
 
 ```sh
 myseq=MQRAVSVVARLGFRLQAFPPALCRPLSCAQEVLRRTPLY
 python zero_shot_single.py --name example  -s ${myseq} -o output/single -tk 20
 ```
-
-生成所有可能的单点突变的打分，以及Top 20突变的csv文件。
 
 ![image-20250117165949171](https://raw.githubusercontent.com/Gabriel-QIN/pic/master/20250117174056259.png)
 
