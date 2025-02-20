@@ -1,3 +1,4 @@
+
 # AI蛋白质工程
 
 > 使用蛋白质序列概率模型推断突变效应
@@ -40,22 +41,22 @@ $$
 
 理解蛋白质对于许多科学研究至关重要，从药物发现到合成生物学都离不开它。传统的分析方法，如X射线晶体学和核磁共振，不仅成本高昂，而且耗费大量人力物力。因此，迫切需要能够大规模处理蛋白质分析的计算方法。随着来自UniProt和NCBI GenBank等数据库的蛋白质序列数据日益增多，开发高效的计算工具以实现蛋白质的高效分析变得尤为重要。传统的序列比对方法（如BLAST）难以应对现代蛋白质数据集的巨大多样性和复杂性。考虑到蛋白质序列与自然语言之间的相似性，计算生物学家们开始将自然语言处理（Natural Language Processing，NLP）技术应用于生物数据：将氨基酸作为“词”，将蛋白质序列作为“句子”，从而解码蛋白质的“语义”[12]。
 
-ESM（Evolutionary Scale Modeling）系列蛋白质语言模型在大规模的蛋白质序列数据进行预训练[13-15]，可以捕获到蛋白质序列中复杂的进化和结构信息，从而在多个下游生物学任务中取得了出色的表现。
+ESM（Evolutionary Scale Modeling）系列蛋白质语言模型在大规模的蛋白质序列数据进行预训练[13-17]，可以捕获到蛋白质序列中复杂的进化和结构信息，从而在多个下游生物学任务中取得了出色的表现。
 
 ESM系列模型包括①最早的是ESM1系列（ESM-MSA-1b、ESM1b、ESM1v）；②ESM2语言模型实现了高精度的蛋白质结构预测；③多模态的ESM3模型实现了功能蛋白的从头设计。
 
-1. ESM-1b采用Transformer架构在UniRef50数据集上进行训练，使用masked token prediction任务，即随机mask序列中的部分氨基酸（例如，15%的氨基酸），并基于序列中其它未被mask的氨基酸预测mask部分氨基酸类型。
-2. ESM-MSA-1b在ESM-1b的基础上进行了改进，将输入从蛋白质序列改为多序列比对（Multiple Sequence Alignment，MSA），并在Transformer中加入行、列两个轴向的注意力机制。
-3. ESM-1v模型采用与ESM-1b相同的架构，在UniRef90数据集上进行训练，能够实现蛋白质功能的零样本预测。
-4. ESM2模型在ESM1基础上，使用了更深层的神经网络架构和更多的训练数据，在多个下游任务中的取得了较ESM-1b更好的性能。ESM2开放了从8M到15B参数量的不同模型，供用户按需选择不同大小的模型。
-5. ESM3采用生成式掩码语言模型（Masked Language Model, MLM）进行训练，在训练过程中，掩码标记会以噪声调度的方式进行采样，确保ESM3能够在不同的掩码组合下进行训练。这种方式区别于传统的掩码语言建模，允许模型从任何起点生成任意顺序的标记。ESM3能够同时利用序列、结构和功能三个模态的7种信息，并且允许利用任意条件（如几个残基、结构、二级结构和功能等信息）生成目标蛋白质。
+1. ESM-1b[13]采用Transformer架构在UniRef50数据集上进行训练，使用masked token prediction任务，即随机mask序列中的部分氨基酸（例如，15%的氨基酸），并基于序列中其它未被mask的氨基酸预测mask部分氨基酸类型。
+2. ESM-MSA-1b[14]在ESM-1b的基础上进行了改进，将输入从蛋白质序列改为多序列比对（Multiple Sequence Alignment，MSA），并在Transformer中加入行、列两个轴向的注意力机制。
+3. ESM-1v[15]模型使用与ESM-1b相同的架构，在数据量更大的UniRef90数据集上进行训练，能够实现蛋白质功能的零样本预测。
+4. ESM2[16]模型在ESM1基础上，使用了更深层的神经网络架构和更多的训练数据，在多个下游任务中的取得了较ESM-1b更好的性能。ESM2开放了从8M到15B参数量的不同模型，供用户按需选择不同大小的模型。
+5. ESM3[17]采用生成式掩码语言模型（Masked Language Model, MLM）进行训练，在训练过程中，掩码标记会以噪声调度的方式进行采样，确保ESM3能够在不同的掩码组合下进行训练。这种方式区别于传统的掩码语言建模，允许模型从任何起点生成任意顺序的标记。ESM3能够同时利用序列、结构和功能三个模态的7种信息，并且允许利用任意条件（如几个残基、结构、二级结构和功能等信息）生成目标蛋白质。
 
 |            特征            |     ESM1     |      ESM2      |      ESM3      |
 | :------------------------: | :-----------: | :-------------: | :-------------: |
 |    **训练集大小**    | 小 (~1M 序列) | 中等(~10M 序列) | 大量 (~1B 序列) |
 |     **模型深度**     |     浅层     |      深层      |     超级深     |
 | **是否使用结构数据** |      无      |    有限结构    |    大量结构    |
-|   **下游任务表现**   |     基准     |      改进      |      顶尖      |
+|   **下游任务表现**   |     基准     |      改进      |      最优      |
 
 ### 1. 环境配置
 
@@ -99,7 +100,7 @@ ESM预测突变影响的方式是无监督的，即在训练过程中并未使�
 1. 首先，我们需要加载预训练的ESM-2模型及其分词器，并指定输入的蛋白质序列。接着，使用分词器对序列进行分词处理，生成一系列的token ID。在蛋白质序列中，每个氨基酸都通过分词器的词汇表映射到一个相应的token。
 2. 对于蛋白质序列中的每个位置$i$，我们需要计算每个标准20种氨基酸的对数似然比来表示氨基酸替换对序列的影响。在每个位置$i$，目标氨基酸被mask，然后使用模型预测该位置氨基酸标记的概率分布。模型输出的每个氨基酸标记的logits通过softmax函数转化为概率。
 
-在ESM-1v文章中，作者比较了多种LLR打分方式，其中**Masked marginal**表现最优，因此本文默认采用**Masked marginal**方法进行打分。
+在ESM-1v文章中[15]，作者比较了多种LLR打分方式，其中**Masked marginal**表现最优，因此本文默认采用**Masked marginal**方法进行打分。
 
 假设$x_{mut}$和$x_{wt}$分别为突变序列和野生型序列，$x^{i}$为在第$i$个氨基酸引入mask的序列，$M$是一个突变的集合，如果序列在第1个氨基酸和第5个氨基酸发生突变，则$M=\{1,5\}$。不同的突变打分策略计算方式如下：
 
@@ -212,12 +213,20 @@ python zero_shot_multi.py --name example  --seq ${myseq} --mut_pool output/singl
 
 [12] https://github.com/LirongWu/awesome-protein-representation-learning
 
-[13] https://esm3academy.com/the-evolution-of-esm-models-leading-to-esm3/
+[13] A. Rives *et al.*  Biological structure and function emerge from scaling unsupervised learning to 250 million protein sequences, *Proc. Natl. Acad. Sci. U.S.A.* 118:15 (2021). https://doi.org/10.1073/pnas.2016239118
 
-[14] https://github.com/facebookresearch/esm
+[14] R. Rao *et al.*  Proceedings of the 38th International Conference on Machine Learning, *PMLR* 139:8844-8856 (2021). https://doi.org/10.1101/2021.02.12.430858
 
-[15] Lin, Z. et al. Evolutionary-scale prediction of atomic-level protein structure with a language model. *Science* **379**, 1123–1130 (2023). https://doi.org/10.1126/science.ade2574
+[15] J. Meier *et al.* Language models enable zero-shot prediction of the effects of mutations on protein function. In Proceedings of the 35th International Conference on Neural Information Processing Systems (2021).  https://doi.org/10.1101/2021.07.09.450648
 
-[16] https://github.com/amelie-iska/Variant-Effects
+[16] Lin, Z. *et al*. Evolutionary-scale prediction of atomic-level protein structure with a language model. *Science* **379**, 1123–1130 (2023). https://doi.org/10.1126/science.ade2574
 
-[17] https://github.com/ntranoslab/esm-variants
+[17] T. Hayes *et al.* Simulating 500 million years of evolution with a language model. *Science*, eads0018 (2024). https://doi.org/10.1126/science.ads0018
+
+[18] https://esm3academy.com/the-evolution-of-esm-models-leading-to-esm3/
+
+[19] https://github.com/facebookresearch/esm
+
+[20] https://github.com/amelie-iska/Variant-Effects
+
+[21] https://github.com/ntranoslab/esm-variants
