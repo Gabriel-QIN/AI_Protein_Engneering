@@ -124,10 +124,9 @@ ESM预测突变影响的方式是无监督的，即在训练过程中并未使�
 
 - **Masked marginal**：需要使用WT序列作为输入进行$L$（即序列长度）次正向传播。在突变位置引入mask标记，通过计算突变相对于野生型（Wild-Type，WT）氨基酸的概率来评估突变的得分。
 
-$$
-score = \sum_{i\in M}log\ p(x^i=x^i_{mut}|x-_{M})- log\ p(x^i=x^i_{wt}|x-_{M}))
-$$
-
+  $$
+  score = \sum_{i\in M}log\ p(x^i=x^i_{mut}|x-_{M})- log\ p(x^i=x^i_{wt}|x-_{M}))
+  $$
 - **Wildtype marginal**: 计算效率最快的打分策略，仅使用WT序列作为输入进行一次正向传播。对于位置$M$上的一组突变，得分为：
 
 $$
@@ -171,7 +170,7 @@ df["esm2"] = df.apply(lambda row: label_row(row["mutant"], sequence, token_probs
 
 该脚本的帮助文档如下：
 
-![b22c7614b2385baf700ac9135abf1fc](AI蛋白质工程/b22c7614b2385baf700ac9135abf1fc-17400365333161.png)
+![b22c7614b2385baf700ac9135abf1fc](https://raw.githubusercontent.com/Gabriel-QIN/source/master/pic/b22c7614b2385baf700ac9135abf1fc-17400368618503.png)
 
 ```sh
 myseq=MQRAVSVVARLGFRLQAFPPALCRPLSCAQEVLRRTPLY
