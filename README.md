@@ -219,12 +219,6 @@ python zero_shot_multi.py --name example  --seq ${myseq} --mut_pool output/singl
 
 ![image-20250117174246166](https://raw.githubusercontent.com/Gabriel-QIN/pic/master/20250117174258516.png)
 
-### 下期预告
-
-少样本微调预测突变
-
-使用逆折叠模型进行突变预测
-
 ## 参考文献
 
 [1] Listov, D., Goverde, C.A., Correia, B.E. *et al.* Opportunities and challenges in design and optimization of protein function. *Nat Rev Mol Cell Biol* **25**, 639–653 (2024). https://doi.org/10.1038/s41580-024-00718-y
